@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D5692815-E83F-D9AB-0332-0C645CCDE791}</ProjectGuid>
+    <ProjectGuid>{427839BC-29AD-0184-C3CE-37782FEA2C88}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.Services.Core.Editor</AssemblyName>
@@ -79,8 +79,8 @@
     <Compile Include="Library\PackageCache\com.unity.services.core@1.4.2\Editor\Core\ProjectStateManagement\ProjectState.cs" />
     <Compile Include="Library\PackageCache\com.unity.services.core@1.4.2\Editor\Core\CloudEnvironment\CloudEnvironmentConfigProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.services.core@1.4.2\Editor\Core\UiHelpers\PlatformSupportUiHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.services.core@1.4.2\Editor\Core\Networking\ITokenExchangeUrls.cs" />
     <Compile Include="Library\PackageCache\com.unity.services.core@1.4.2\Editor\Core\ProjectBindRedirect\ProjectBindRedirectPopupUI.cs" />
+    <Compile Include="Library\PackageCache\com.unity.services.core@1.4.2\Editor\Core\Networking\ITokenExchangeUrls.cs" />
     <Compile Include="Library\PackageCache\com.unity.services.core@1.4.2\Editor\Core\ProjectStateManagement\IServiceFlagRequest.cs" />
     <Compile Include="Library\PackageCache\com.unity.services.core@1.4.2\Editor\Core\UserRoleManagement\IUserRoleHandler.cs" />
     <Compile Include="Library\PackageCache\com.unity.services.core@1.4.2\Editor\Core\EditorGameService\ServiceFlagEndpoint.cs" />
@@ -828,39 +828,39 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Services.Core.csproj">
-      <Project>{70D1B2FE-05BB-8A55-26ED-6CDE1471610F}</Project>
+      <Project>{89872DF9-EC30-363D-4B06-A498ECF3193A}</Project>
       <Name>Unity.Services.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Networking.csproj">
-      <Project>{02B20F38-DF6B-93F9-F61B-485387C0DE7D}</Project>
+      <Project>{402A152A-5138-06B0-37CD-157BE2656159}</Project>
       <Name>Unity.Services.Core.Networking</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Internal.csproj">
-      <Project>{F0F5EC68-935A-C65F-97AE-EEF5024F7A00}</Project>
+      <Project>{A9657245-12C6-D653-A5A5-6CA2C7EB3C8D}</Project>
       <Name>Unity.Services.Core.Internal</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Configuration.Editor.csproj">
-      <Project>{47C0442C-E65B-0B66-F6BD-305A1225B516}</Project>
+      <Project>{B1AB23F0-528D-4BAB-537E-5ECC1353E219}</Project>
       <Name>Unity.Services.Core.Configuration.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Telemetry.csproj">
-      <Project>{95A6E364-B7AE-504E-F87D-B879CB5F2D8C}</Project>
+      <Project>{B1D2598D-8CAE-475B-F4EF-AC4993558BEE}</Project>
       <Name>Unity.Services.Core.Telemetry</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{AA7B3CBF-EE95-D92A-1020-1631115D1EAD}</Project>
+      <Project>{CC8492E2-0381-319D-89A3-AFBFD6B4402E}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{D590C8B3-F7C4-4579-B319-2695CBB77DA3}</Project>
+      <Project>{153123FE-CF4A-C931-61E8-E284D2E92610}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{9584594D-A14F-CCD8-9BE9-BEC996F4AC5B}</Project>
+      <Project>{975B744D-8ED5-0B6E-635A-B3A1BA4CC2BA}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{391A580D-83B7-9C37-DF9F-9C4E96B8F152}</Project>
+      <Project>{20251FE3-8AB6-71C1-FFB4-1BE9C8A6AB8F}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
