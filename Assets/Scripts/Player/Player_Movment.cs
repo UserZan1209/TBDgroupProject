@@ -8,11 +8,12 @@ public class Player_Movment : MonoBehaviour
 
     /*
      
-     Move around and be restricted by barriers to maintain a 2D look []
+     Move around[]
 
-     Rotate body to face the direction of movement []
+     Rotate body[]
 
      Implement extra movement options;
+        Head Bobbing []
         Crouch []
         Roll []
         Jump []
@@ -20,88 +21,160 @@ public class Player_Movment : MonoBehaviour
 
      */
 
-    [SerializeField] private float moveSpeed = 10.0f;
+    #region Player Movement Variables
+    [Header("Player Movement Variables")]
+    [SerializeField] private bool canMove;
+    [SerializeField] private bool isMoving;
+    [HideInInspector] private bool isOnGround = true;
+    [SerializeField] private bool isCrouched;
+    [SerializeField] private bool isSprintingEnabled = true;
+
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float sprintSpeed;
+    [HideInInspector] public float maxVelocityChange = 10.0f;
+    #endregion
+
+    #region Camera Variables
+    [Header("Camera Variables")]
+    [SerializeField] private bool canCameraMove;
+    [HideInInspector] private bool isInverted = false;
+
+    [SerializeField] public float lookSensitivity;
+    [HideInInspector] private float yaw = 0.0f;
+    [HideInInspector] private float pitch = 0.0f;
+    [SerializeField] private float clampAngle = 50.0f;
+    [SerializeField] private float cameraOffsetY;
+
+
+    #endregion
+
+    #region Player Input Keys
+    [Header("Player Inputs")]
+    [SerializeField] KeyCode sprintKey;
+
+    #endregion
+
+    #region other
+    [Header("References")]
     [SerializeField] private GameObject myBodyRef;
+    [SerializeField] private Rigidbody playerRb;
+    [SerializeField] private Camera cam;
+    #endregion
 
-    [HideInInspector] private enum myDirections { Left, Right, Up, Down };
-    [SerializeField] private myDirections playerDirection = myDirections.Right;
+    private void Awake()
+    {
+      
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        sprintSpeed = moveSpeed * 1.5f;
+        playerRb = myBodyRef.gameObject.GetComponent<Rigidbody>();
+        cam = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        movePlayer(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        setPlayerRotation();
+        CameraController();
     }
 
-    private void movePlayer(float xInput, float yInput)
+    private void FixedUpdate()
     {
-        transform.Translate(xInput * Time.deltaTime * moveSpeed, 0.0f, yInput * Time.deltaTime * moveSpeed);
+        MovePlayer();
     }
 
-    private void setPlayerDirection(float xInput, float yInput)
+    private void MovePlayer()
     {
-        //Debug.Log("RAW Xinput: " + xInput + "RAW Yinput: " + yInput);
-
-        if(yInput == 0.0f)
+        if (canMove)
         {
-            if (xInput > 0)
+            // Calculate the speed the gameobject should move at
+            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+            // Checks if player is walking and isGrounded
+            if (targetVelocity.x != 0 || targetVelocity.z != 0 && isOnGround)
             {
-                playerDirection = myDirections.Right;
-            }
-            else if (xInput < 0)
-            {
-                playerDirection = myDirections.Left;
+                isMoving = true;
             }
             else
             {
-                Debug.Log("X = Zero");
+                isMoving = false;
             }
-        }
-        else
-        {
-            if(yInput > 0)
-            {
-                playerDirection = myDirections.Up;
-            }
-            else if(yInput < 0)
-            {
-                playerDirection = myDirections.Down;
-            }
-        }
 
+
+
+            // All movement calculations shile sprint is active
+            if (isSprintingEnabled && Input.GetKey(sprintKey))
+            {
+                targetVelocity = myBodyRef.transform.TransformDirection(targetVelocity) * sprintSpeed;
+
+                // Apply a force that attempts to reach our target velocity
+                Vector3 velocity = playerRb.velocity;
+                Vector3 velocityChange = (targetVelocity - velocity);
+                velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+                velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+                velocityChange.y = 0;
+
+                // Player is only moving when valocity change != 0
+                // Makes sure fov change only happens during movement
+                if (velocityChange.x != 0 || velocityChange.z != 0)
+                {
+                    isSprintingEnabled = true;
+
+                    if (isCrouched)
+                    {
+                        //Crouch();
+                    }
+                    
+                }
+
+                playerRb.AddForce(velocityChange, ForceMode.VelocityChange);
+            }
+            // All movement calculations while walking
+            else
+            {
+
+                //isSprintingEnabled = false;
+                targetVelocity = myBodyRef.transform.TransformDirection(targetVelocity) * moveSpeed;
+
+                //Apply a force that attempts to reach our target velocity
+                Vector3 velocity = playerRb.velocity;
+                Vector3 velocityChange = (targetVelocity - velocity);
+                velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+                velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+                velocityChange.y = 0;
+
+                playerRb.AddForce(velocityChange, ForceMode.VelocityChange);
+                
+
+            }
+
+        }
     }
 
-    private void setPlayerRotation()
+    private void CameraController()
     {
-        setPlayerDirection(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Quaternion rot = new Quaternion(0, 0, 0, 1);
-        switch (playerDirection) 
+        if (canCameraMove)
         {
-            case myDirections.Right:
-                rot = new Quaternion(0,180,0,1);
-                myBodyRef.transform.SetPositionAndRotation(transform.position, rot);
-                break;
-            case myDirections.Left:
-                rot = new Quaternion(0, 0, 0, 1);
-                myBodyRef.transform.SetPositionAndRotation(transform.position, rot);
-                break;
-            case myDirections.Up:
-                rot = new Quaternion(0, 90, 0, 1);
-                myBodyRef.transform.SetPositionAndRotation(transform.position, rot);
-                break;
-            case myDirections.Down:
-                rot = new Quaternion(0, 270, 0, 1);
-                myBodyRef.transform.SetPositionAndRotation(transform.position, rot);
-                break;
-            default:
-                Debug.Log("Error with the player direction Enum");
-                break;
+            cam.transform.position = new Vector3 (myBodyRef.transform.position.x, myBodyRef.transform.position.y + cameraOffsetY, myBodyRef.transform.position.z);
+            yaw = myBodyRef.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * lookSensitivity;
+
+            if (!isInverted)
+            {
+                pitch -= lookSensitivity * Input.GetAxis("Mouse Y");
+            }
+            else
+            {
+                // Inverted Y
+                pitch += lookSensitivity * Input.GetAxis("Mouse Y");
+            }
+
+            // Clamp pitch between lookAngle
+            pitch = Mathf.Clamp(pitch, -clampAngle, clampAngle);
+
+            myBodyRef.transform.localEulerAngles = new Vector3(0, yaw, 0);
+            cam.transform.localEulerAngles = new Vector3(pitch, 0, 0);
         }
     }
+
+
 }

@@ -6,10 +6,7 @@ public class Camera_Controller : MonoBehaviour
 {
 
     [SerializeField] private GameObject playerBodyRef;
-    [SerializeField] private float cameraOffset;
-
-    private bool canFollowPlayer = true;
-    private Vector3 playerCurPos;
+    [SerializeField] private float sensitivity;
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,25 +16,13 @@ public class Camera_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canFollowPlayer)
+        if(Input.GetAxis("Mouse X") > 0.0f)
         {
-            playerCurPos = getPlayerPosition();
-            setCameraPostition();
+            transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivity, 0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivity);
         }
-        else
+        else if(Input.GetAxis("Mouse X") < 0.0f) 
         {
-            Debug.Log("Not Looking for Player");
+            transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivity, 0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivity);
         }
-    }
-
-    private Vector3 getPlayerPosition()
-    {
-        Vector3 newPos = new Vector3(playerBodyRef.transform.position.x, playerBodyRef.transform.position.y, playerBodyRef.transform.position.z);
-        return newPos;
-    }
-
-    private void setCameraPostition()
-    {
-        transform.SetPositionAndRotation(new Vector3(playerCurPos.x += cameraOffset, playerCurPos.y, playerCurPos.z), transform.rotation);
     }
 }
