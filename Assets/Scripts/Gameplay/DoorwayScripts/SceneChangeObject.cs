@@ -16,7 +16,7 @@ public class SceneChangeObject : MonoBehaviour
 
      */
 
-    private const int MAX_SCENES = 2; // TEMP - delete when finished
+    private const int MAX_SCENES = 1; // TEMP - delete when finished
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +32,7 @@ public class SceneChangeObject : MonoBehaviour
 
     private int generateRandomSceneNumber(int MaxSceneNumber)
     {
+        //min scenes will always be 0
         int rand = Random.Range(0, MAX_SCENES);
         //Debug.Log(rand);
         return rand;
