@@ -21,6 +21,7 @@ public class LevelSystem : MonoBehaviour
     [SerializeField] private float stamina;
     #endregion
     #region Level Variables
+    [Header("Level Variables")]
     [SerializeField] private int Level;
     [SerializeField] private int totalExp;
     [SerializeField] private int thisLevelExpGained;
