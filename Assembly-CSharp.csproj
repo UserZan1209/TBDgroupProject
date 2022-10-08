@@ -59,12 +59,29 @@
     <Compile Include="Assets\Scripts\Menu Scripts\MainMenuScript.cs" />
     <Compile Include="Assets\Scripts\Gameplay\DoorwayScripts\SceneChangeObject.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
+    <Compile Include="Assets\Starfield Skybox\Demo\Script\LookCamera.cs" />
+    <Compile Include="Assets\Scripts\Weapons\projectiles.cs" />
     <Compile Include="Assets\Scripts\Player\Camera_Controller.cs" />
     <Compile Include="Assets\Scripts\Menu Scripts\PauseMenuScript.cs" />
     <Compile Include="Assets\Scripts\Utilites\LevelSystem.cs" />
+    <Compile Include="Assets\Scripts\Weapons\WeaponController.cs" />
     <Compile Include="Assets\Scripts\Utilites\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponsScript.cs" />
     <Compile Include="Assets\Scripts\Player\Player_Movment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Blockout\Resources\Blockout\Pins\Blockout_Pin_Shader.shader" />
+    <None Include="Assets\Blockout\Shaders\Blockout_Leaf_2018.shader" />
+    <None Include="Assets\Blockout\Resources\Blockout\Ruler\Ruler_Shader.shader" />
+    <None Include="Assets\Blockout\Shaders\Area_Comment_Wireframe_2018.shader" />
+    <None Include="Assets\Blockout\Shaders\Gate_Particle_2018.shader" />
+    <None Include="Assets\Blockout\Shaders\Blockout_Shader_Tri_2018.shader" />
+    <None Include="Assets\Blockout\Resources\Blockout\Pins\Pin_Backfacing.shader" />
+    <None Include="Assets\Blockout\Shaders\Editor_Trigger_2018.shader" />
+    <None Include="Assets\Blockout\Shaders\Blockout_Shader_Base_2018.shader" />
+    <None Include="Assets\Blockout\Shaders\Blockout_Comment_Shader_2018.shader" />
+    <None Include="Assets\Blockout\Shaders\Blockout_Depth_Blend_2018.shader" />
+    <None Include="Assets\Blockout\Shaders\Blockout_Water_2018.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -711,6 +728,10 @@
       <Project>{27E273F4-9E45-DA1C-C994-58029485BC50}</Project>
       <Name>Unity.VisualStudio.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="RadicalForge.Blockout.Editor.csproj">
+      <Project>{945D201C-3AE6-4525-A771-5E9420378140}</Project>
+      <Name>RadicalForge.Blockout.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Timeline.csproj">
       <Project>{842018AD-8534-6DDC-A336-AD3C70495D12}</Project>
       <Name>Unity.Timeline</Name>
@@ -778,6 +799,10 @@
     <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj">
       <Project>{F10D50D8-5003-BE12-189B-A8EF238B9F23}</Project>
       <Name>Unity.EditorCoroutines.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="RadicalForge.Blockout.csproj">
+      <Project>{24FB1D41-E9DC-F812-F9E4-51A039694080}</Project>
+      <Name>RadicalForge.Blockout</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
       <Project>{39FFFC20-D454-F0A1-B9BC-C2B288524BFC}</Project>

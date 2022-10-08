@@ -8,15 +8,15 @@ public class Player_Movment : MonoBehaviour
 
     /*
      
-     Move around[]
+     Move around[x]
 
-     Rotate body[]
+     Rotate body[x]
 
      Implement extra movement options;
         Head Bobbing []
         Crouch []
         Roll []
-        Jump []
+        Jump/ double jump []
         Swing []
 
      */
@@ -38,6 +38,7 @@ public class Player_Movment : MonoBehaviour
     [Header("Camera Variables")]
     [SerializeField] private bool canCameraMove;
     [HideInInspector] private bool isInverted = false;
+    [HideInInspector] private bool isCursorVisible = false;
 
     [SerializeField] public float lookSensitivity;
     [HideInInspector] private float yaw = 0.0f;
@@ -48,9 +49,14 @@ public class Player_Movment : MonoBehaviour
 
     #endregion
 
+    #region flashlight Variables
+    [SerializeField] private Light myLight;
+    #endregion
+
     #region Player Input Keys
     [Header("Player Inputs")]
     [SerializeField] KeyCode sprintKey;
+    [SerializeField] KeyCode toggleLightKey;
 
     #endregion
 
@@ -71,11 +77,18 @@ public class Player_Movment : MonoBehaviour
         sprintSpeed = moveSpeed * 1.5f;
         playerRb = myBodyRef.gameObject.GetComponent<Rigidbody>();
         cam = Camera.main;
+        isCursorVisible = false;
+        
     }
 
     private void Update()
     {
         CameraController();
+        if(Input.GetKeyUp(toggleLightKey))
+            toggleFlashLight();
+
+        checkForCursorChange();
+
     }
 
     private void FixedUpdate()
@@ -155,6 +168,7 @@ public class Player_Movment : MonoBehaviour
     {
         if (canCameraMove)
         {
+            Cursor.lockState = CursorLockMode.Confined;
             cam.transform.position = new Vector3 (myBodyRef.transform.position.x, myBodyRef.transform.position.y + cameraOffsetY, myBodyRef.transform.position.z);
             yaw = myBodyRef.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * lookSensitivity;
 
@@ -174,7 +188,44 @@ public class Player_Movment : MonoBehaviour
             myBodyRef.transform.localEulerAngles = new Vector3(0, yaw, 0);
             cam.transform.localEulerAngles = new Vector3(pitch, 0, 0);
         }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
     }
 
+    private void toggleFlashLight()
+    {
+        myLight.enabled = !myLight.enabled;
+    }
+
+    private void checkForCursorChange()
+    {
+        if (isCursorVisible)
+        {
+            changeCursorState(CursorLockMode.Confined);
+        }
+        else
+        {
+            changeCursorState(CursorLockMode.Locked);
+        }
+    }
+    private void changeCursorState(CursorLockMode mode)
+    {
+        switch (mode)
+        {
+            case CursorLockMode.Confined:
+                Cursor.lockState = CursorLockMode.Confined;
+                break;
+            case CursorLockMode.Locked:
+                Cursor.lockState = CursorLockMode.Locked;
+                break;
+            default:
+                Debug.Log("Cursor Lock State is none");
+                Cursor.lockState = CursorLockMode.None;
+                break;
+        }
+
+    }
 
 }
