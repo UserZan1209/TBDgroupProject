@@ -15,9 +15,9 @@ public class Player_Movment : MonoBehaviour
      Implement extra movement options;
         Head Bobbing []
         Crouch []
-        Roll []
-        Jump/ double jump []
-        Swing []
+        dash []
+        Jump/ double jump [x] [x]
+       
 
      */
 
@@ -32,6 +32,11 @@ public class Player_Movment : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float sprintSpeed;
     [HideInInspector] public float maxVelocityChange = 10.0f;
+    [SerializeField] public float jumpForceMultplyer = 5.0f;
+
+    [HideInInspector] private int jumpCounter;
+    [SerializeField] private const int MAX_JUMPS = 2;
+    [SerializeField] private const int JUMP_COOLDOWN = 200;
     #endregion
 
     #region Camera Variables
@@ -57,6 +62,7 @@ public class Player_Movment : MonoBehaviour
     [Header("Player Inputs")]
     [SerializeField] KeyCode sprintKey;
     [SerializeField] KeyCode toggleLightKey;
+    [SerializeField] KeyCode jumpKey;
 
     #endregion
 
@@ -78,17 +84,22 @@ public class Player_Movment : MonoBehaviour
         playerRb = myBodyRef.gameObject.GetComponent<Rigidbody>();
         cam = Camera.main;
         isCursorVisible = false;
+        myLight.enabled = false;
         
     }
 
     private void Update()
     {
+        #region camera related
         CameraController();
         if(Input.GetKeyUp(toggleLightKey))
             toggleFlashLight();
 
         checkForCursorChange();
+        #endregion
 
+        if (Input.GetKeyUp(jumpKey))
+            jump();
     }
 
     private void FixedUpdate()
@@ -228,4 +239,30 @@ public class Player_Movment : MonoBehaviour
 
     }
 
+    private void jump()
+    {
+        if(jumpCounter < MAX_JUMPS)
+        {
+            jumpCounter++;
+            isOnGround = false;
+            playerRb.AddForce(Vector3.up * jumpForceMultplyer);
+        }
+        else
+        {
+            Debug.Log("Jump Limit reached");
+            for(int i = 0; i <= JUMP_COOLDOWN; i++)
+            {
+                if (i == JUMP_COOLDOWN) 
+                    jumpCounter = 0;
+            }
+            
+        }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!isOnGround)
+            isOnGround = true;
+    }
 }

@@ -21,6 +21,7 @@ public class projectiles : MonoBehaviour
     {
         myRb.AddForce(weaponRef.transform.forward * forceMultiplyer);
         counter += Time.deltaTime;
-        Debug.Log(counter);    
+        //Debug.Log(counter);    
+        //destroy when counter reaches x amount
     }
 }
