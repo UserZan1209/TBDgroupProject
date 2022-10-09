@@ -358,6 +358,11 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Graphics/Models/Zombie/Tensori/SkinlessZombie/Demo Scripts/AnimationController.cs"
+"Assets/Graphics/Models/Zombie/Tensori/SkinlessZombie/Demo Scripts/AnimationItemData.cs"
+"Assets/Graphics/Models/Zombie/Tensori/SkinlessZombie/Demo Scripts/CameraController.cs"
+"Assets/Graphics/Models/Zombie/Tensori/SkinlessZombie/Demo Scripts/UIElementController.cs"
+"Assets/Graphics/Skyboxes/Starfield Skybox/Demo/Script/LookCamera.cs"
 "Assets/Scripts/Enemies/EnemyController.cs"
 "Assets/Scripts/Enemies/EnemyMovement.cs"
 "Assets/Scripts/Gameplay/DoorwayScripts/SceneChangeObject.cs"
@@ -365,12 +370,13 @@
 "Assets/Scripts/Menu Scripts/PauseMenuScript.cs"
 "Assets/Scripts/Player/Camera_Controller.cs"
 "Assets/Scripts/Player/Player_Movment.cs"
+"Assets/Scripts/SuperClasses/Weapon.cs"
 "Assets/Scripts/Utilites/DontDestroyOnLoad.cs"
 "Assets/Scripts/Utilites/LevelSystem.cs"
+"Assets/Scripts/Weapons/Melee.cs"
 "Assets/Scripts/Weapons/projectiles.cs"
 "Assets/Scripts/Weapons/WeaponController.cs"
 "Assets/Scripts/Weapons/WeaponsScript.cs"
-"Assets/Starfield Skybox/Demo/Script/LookCamera.cs"
 -langversion:9.0
 
 /deterministic

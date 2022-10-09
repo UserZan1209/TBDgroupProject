@@ -26,4 +26,10 @@ public class EnemyController : MonoBehaviour
                 break;
         }
     }
+
+    public void takeDamage(int dmg)
+    {
+        //Temp
+        bodyRef.SetActive(false);
+    }
 }

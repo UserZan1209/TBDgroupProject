@@ -24,7 +24,7 @@ public class Player_Movment : MonoBehaviour
     #region Player Movement Variables
     [Header("Player Movement Variables")]
     [SerializeField] private bool canMove;
-    [SerializeField] private bool isMoving;
+    [SerializeField] private bool isMoving; // just to check if the player is geting inputs for movement
     [HideInInspector] private bool isOnGround = true;
     [SerializeField] private bool isCrouched;
     [SerializeField] private bool isSprintingEnabled = true;
@@ -36,7 +36,7 @@ public class Player_Movment : MonoBehaviour
 
     [HideInInspector] private int jumpCounter;
     [SerializeField] private const int MAX_JUMPS = 2;
-    [SerializeField] private const int JUMP_COOLDOWN = 200;
+    [HideInInspector] private const int JUMP_COOLDOWN = 180;
     #endregion
 
     #region Camera Variables
@@ -263,6 +263,9 @@ public class Player_Movment : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!isOnGround)
+        {
+            jumpCounter = 0;
             isOnGround = true;
+        }     
     }
 }

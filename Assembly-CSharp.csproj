@@ -59,7 +59,7 @@
     <Compile Include="Assets\Scripts\Menu Scripts\MainMenuScript.cs" />
     <Compile Include="Assets\Scripts\Gameplay\DoorwayScripts\SceneChangeObject.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
-    <Compile Include="Assets\Starfield Skybox\Demo\Script\LookCamera.cs" />
+    <Compile Include="Assets\Graphics\Skyboxes\Starfield Skybox\Demo\Script\LookCamera.cs" />
     <Compile Include="Assets\Scripts\Weapons\projectiles.cs" />
     <Compile Include="Assets\Scripts\Player\Camera_Controller.cs" />
     <Compile Include="Assets\Scripts\Menu Scripts\PauseMenuScript.cs" />
@@ -67,8 +67,14 @@
     <Compile Include="Assets\Scripts\Weapons\WeaponController.cs" />
     <Compile Include="Assets\Scripts\Utilites\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponsScript.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_Movment.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Player\Player_Movment.cs" />
+    <Compile Include="Assets\Scripts\SuperClasses\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Melee.cs" />
+    <Compile Include="Assets\Graphics\Models\Zombie\Tensori\SkinlessZombie\Demo Scripts\UIElementController.cs" />
+    <Compile Include="Assets\Graphics\Models\Zombie\Tensori\SkinlessZombie\Demo Scripts\AnimationController.cs" />
+    <Compile Include="Assets\Graphics\Models\Zombie\Tensori\SkinlessZombie\Demo Scripts\AnimationItemData.cs" />
+    <Compile Include="Assets\Graphics\Models\Zombie\Tensori\SkinlessZombie\Demo Scripts\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Blockout\Resources\Blockout\Pins\Blockout_Pin_Shader.shader" />
