@@ -24,4 +24,9 @@ public class projectiles : MonoBehaviour
         //Debug.Log(counter);    
         //destroy when counter reaches x amount
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }

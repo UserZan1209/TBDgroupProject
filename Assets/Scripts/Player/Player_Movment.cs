@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Movment : MonoBehaviour
 {
@@ -9,16 +10,13 @@ public class Player_Movment : MonoBehaviour
     /*
      
      Move around[x]
-
      Rotate body[x]
-
      Implement extra movement options;
         Head Bobbing []
         Crouch []
         dash []
         Jump/ double jump [x] [x]
        
-
      */
 
     #region Player Movement Variables
@@ -75,7 +73,7 @@ public class Player_Movment : MonoBehaviour
 
     private void Awake()
     {
-      
+
     }
 
     void Start()
@@ -85,14 +83,14 @@ public class Player_Movment : MonoBehaviour
         cam = Camera.main;
         isCursorVisible = false;
         myLight.enabled = false;
-        
+
     }
 
     private void Update()
     {
         #region camera related
         CameraController();
-        if(Input.GetKeyUp(toggleLightKey))
+        if (Input.GetKeyUp(toggleLightKey))
             toggleFlashLight();
 
         checkForCursorChange();
@@ -100,6 +98,9 @@ public class Player_Movment : MonoBehaviour
 
         if (Input.GetKeyUp(jumpKey))
             jump();
+
+        if (Input.GetKeyUp(KeyCode.F1))
+            SceneManager.LoadScene(0); // main menu
     }
 
     private void FixedUpdate()
@@ -148,7 +149,7 @@ public class Player_Movment : MonoBehaviour
                     {
                         //Crouch();
                     }
-                    
+
                 }
 
                 playerRb.AddForce(velocityChange, ForceMode.VelocityChange);
@@ -168,7 +169,7 @@ public class Player_Movment : MonoBehaviour
                 velocityChange.y = 0;
 
                 playerRb.AddForce(velocityChange, ForceMode.VelocityChange);
-                
+
 
             }
 
@@ -180,7 +181,7 @@ public class Player_Movment : MonoBehaviour
         if (canCameraMove)
         {
             Cursor.lockState = CursorLockMode.Confined;
-            cam.transform.position = new Vector3 (myBodyRef.transform.position.x, myBodyRef.transform.position.y + cameraOffsetY, myBodyRef.transform.position.z);
+            cam.transform.position = new Vector3(myBodyRef.transform.position.x, myBodyRef.transform.position.y + cameraOffsetY, myBodyRef.transform.position.z);
             yaw = myBodyRef.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * lookSensitivity;
 
             if (!isInverted)
@@ -241,7 +242,7 @@ public class Player_Movment : MonoBehaviour
 
     private void jump()
     {
-        if(jumpCounter < MAX_JUMPS)
+        if (jumpCounter < MAX_JUMPS)
         {
             jumpCounter++;
             isOnGround = false;
@@ -250,12 +251,12 @@ public class Player_Movment : MonoBehaviour
         else
         {
             Debug.Log("Jump Limit reached");
-            for(int i = 0; i <= JUMP_COOLDOWN; i++)
+            for (int i = 0; i <= JUMP_COOLDOWN; i++)
             {
-                if (i == JUMP_COOLDOWN) 
+                if (i == JUMP_COOLDOWN)
                     jumpCounter = 0;
             }
-            
+
         }
 
     }
@@ -266,6 +267,6 @@ public class Player_Movment : MonoBehaviour
         {
             jumpCounter = 0;
             isOnGround = true;
-        }     
+        }
     }
 }

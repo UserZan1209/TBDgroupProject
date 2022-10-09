@@ -18,6 +18,7 @@ public class SceneChangeObject : MonoBehaviour
 
     private const int MAX_SCENES = 1; // TEMP - delete when finished
 
+    [SerializeField] private int scene;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,8 +48,8 @@ public class SceneChangeObject : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            changeScene(generateRandomSceneNumber(MAX_SCENES));
-            
+            //changeScene(generateRandomSceneNumber(MAX_SCENES));
+            SceneManager.LoadScene(scene);
         }
     }
 }
