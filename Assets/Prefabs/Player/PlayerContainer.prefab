@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: 
+  playerRef: {fileID: 0}
   weaponModel: {fileID: 0}
   weaponMuzzle: {fileID: 0}
   projectileObject: {fileID: 0}
@@ -405,6 +406,7 @@ MonoBehaviour:
   ammoCurrantMagazineMax: 0
   ammoCurrantMagazine: 0
   weaponRange: 0
+  isPickedUp: 0
   weaponDamage: 10
   mainCamRef: {fileID: 0}
 --- !u!1 &3401058785143048025
@@ -606,6 +608,7 @@ MonoBehaviour:
   toggleLightKey: 116
   jumpKey: 32
   myBodyRef: {fileID: 576304748504797115}
+  myWeaponContainer: {fileID: 576304748917708891}
   playerRb: {fileID: 0}
   cam: {fileID: 0}
 --- !u!114 &8173594251032491160
@@ -637,6 +640,7 @@ MonoBehaviour:
   toggleLightKey: 0
   jumpKey: 0
   myBodyRef: {fileID: 0}
+  myWeaponContainer: {fileID: 0}
   playerRb: {fileID: 0}
   cam: {fileID: 0}
 --- !u!1 &3736323022752642249

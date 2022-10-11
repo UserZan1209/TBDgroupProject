@@ -11,54 +11,44 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private GameObject weaponModel;
     [SerializeField] private GameObject weaponMuzzle;
     [SerializeField] private GameObject projectileObject;
-    [SerializeField] private GameObject[] myWeapons;
+    [SerializeField] private GameObject weaponFist;
+
 
     [SerializeField] private int ammoReserve;
     [SerializeField] private int ammoCurrantMagazineMax;
     [SerializeField] private int ammoCurrantMagazine;
+    [SerializeField] private const int MAX_WEAPONS = 2;
 
     [SerializeField] private float curWeaponNum;
+
+    [SerializeField] private bool hasMoreThanOneWeapon = false;
+
+    [SerializeField] public GameObject[] myWeapons;
+
+    [HideInInspector] private WeaponSuper fist;
+
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        myWeapons = new GameObject[transform.childCount];
-        Debug.Log(myWeapons.Length);
-        checkWeapons(); 
+        myWeapons = new GameObject[MAX_WEAPONS];
+        //Debug.Log(myWeapons.Length);
+
+        #region declare fist weapon;
+        weaponFist.AddComponent<WeaponSuper>();
+        weaponFist.GetComponent<WeaponSuper>().name = "Fist";
+        weaponFist.GetComponent<WeaponSuper>().baseDamage = 5;
+
+        myWeapons[0] = weaponFist;
+        #endregion
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        weaponController();
-        if (!weaponModel)
-            FindWeapon();
+       // checkWeapons();
         ScrollWheelController();
-        checkWeapons();
-
-    }
-
-    private void weaponController()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && myWeapons[((int)curWeaponNum)].GetComponent<Melee>() == null)
-        {
-            //fire
-            Debug.Log("Weapon firing");
-            GameObject gm;
-            gm = Instantiate(projectileObject, weaponMuzzle.transform.position, weaponModel.transform.rotation);
-            gm.GetComponent<projectiles>().weaponRef = weaponModel;
-            gm.transform.parent = null;
-
-        }
-
-
-    }
-
-    private void FindWeapon()
-    {
-        weaponModel = transform.GetChild(0).gameObject;
-        if (!weaponModel)
-            Debug.Log("No Weapons");
     }
 
     private void ScrollWheelController()
@@ -92,33 +82,32 @@ public class WeaponController : MonoBehaviour
 
     private void checkWeapons()
     {
-        for (int i = 0; i < myWeapons.Length; i++)
+        if (hasMoreThanOneWeapon)
         {
-            myWeapons[i] = transform.GetChild(i).gameObject;
-        }
-
-        if (myWeapons.Length > 0)
-        {
-            for (int i = 0; i < myWeapons.Length; i++)
+            if (myWeapons.Length > 0)
             {
-                myWeapons[i].SetActive(false);
-            }
-        }
-
-        for(int i = 0; i < myWeapons.Length; i++)
-        {
-            if(i == curWeaponNum)
-            {
-                myWeapons[i].SetActive(true);
-                break;
-            }
-            else
-            {
-                if (i != curWeaponNum && myWeapons[i].activeInHierarchy == true)
+                for (int i = 0; i < myWeapons.Length && myWeapons[i].gameObject != null; i++)
                 {
                     myWeapons[i].SetActive(false);
                 }
             }
+
+            for (int i = 0; i < myWeapons.Length && myWeapons[i].gameObject != null; i++)
+            {
+                if (i == curWeaponNum)
+                {
+                    myWeapons[i].SetActive(true);
+                    break;
+                }
+                else
+                {
+                    if (i != curWeaponNum && myWeapons[i].activeInHierarchy == true)
+                    {
+                        myWeapons[i].SetActive(false);
+                    }
+                }
+            }
         }
+
     }
 }

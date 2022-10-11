@@ -363,6 +363,10 @@
 "Assets/Graphics/Models/Tensori/SkinlessZombie/Demo Scripts/CameraController.cs"
 "Assets/Graphics/Models/Tensori/SkinlessZombie/Demo Scripts/UIElementController.cs"
 "Assets/Graphics/Skyboxes/Starfield Skybox/Demo/Script/LookCamera.cs"
+"Assets/PBRMeleeWeaponsPack/Scripts/CameraMovement.cs"
+"Assets/PBRMeleeWeaponsPack/Scripts/SphericalRotation.cs"
+"Assets/PBRMeleeWeaponsPack/Scripts/Weapon.cs"
+"Assets/PBRMeleeWeaponsPack/Scripts/WeaponsChanger.cs"
 "Assets/Scripts/Enemies/EnemyController.cs"
 "Assets/Scripts/Enemies/EnemyMovement.cs"
 "Assets/Scripts/Gameplay/DoorwayScripts/SceneChangeObject.cs"
@@ -371,6 +375,7 @@
 "Assets/Scripts/Menu Scripts/PauseMenuScript.cs"
 "Assets/Scripts/Player/Camera_Controller.cs"
 "Assets/Scripts/Player/Player_Movment.cs"
+"Assets/Scripts/SuperClasses/ProjectileWeapons.cs"
 "Assets/Scripts/SuperClasses/Weapon.cs"
 "Assets/Scripts/Utilites/DontDestroyOnLoad.cs"
 "Assets/Scripts/Utilites/LevelSystem.cs"
@@ -378,6 +383,7 @@
 "Assets/Scripts/Weapons/projectiles.cs"
 "Assets/Scripts/Weapons/WeaponController.cs"
 "Assets/Scripts/Weapons/WeaponsScript.cs"
+"Assets/WeaponsPack (LowPoly)/DemoScene/SpinWeapon.cs"
 -langversion:9.0
 
 /deterministic

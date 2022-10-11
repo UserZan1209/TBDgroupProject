@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melee : Weapon
+public class Melee : WeaponSuper
 {
     [SerializeField] private int weaponDamage;
     [SerializeField] private Camera mainCamRef;

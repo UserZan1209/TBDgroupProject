@@ -67,6 +67,8 @@ public class Player_Movment : MonoBehaviour
     #region other
     [Header("References")]
     [SerializeField] private GameObject myBodyRef;
+    [SerializeField] public GameObject myWeaponContainer;
+
     [SerializeField] private Rigidbody playerRb;
     [SerializeField] private Camera cam;
     #endregion
