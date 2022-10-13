@@ -14,15 +14,15 @@ public class ProjectileWeapons : WeaponSuper
     // Update is called once per frame
     void Update()
     {
-        if(playerWeaponContainer.GetComponent<WeaponController>().myWeapons != null)
+        if(isPickedUp)
         {
-            if (Input.GetKeyUp(KeyCode.Q))
-                dropWeapon(ref playerWeaponContainer.GetComponent<WeaponController>().myWeapons);
-        }
+            weaponController(isPickedUp);
 
-        weaponController(isPickedUp);
-        
-     
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                dropWeapon();
+            }
+        }
     }
 
     #region Weapon Controller
@@ -55,8 +55,9 @@ public class ProjectileWeapons : WeaponSuper
     {
         if(other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.F))
         {
+            refreshPlayerWeapons();
+            Debug.Log("player picked me up");
             pickUpWeapon(ref playerWeaponContainer.GetComponent<WeaponController>().myWeapons);
-            isPickedUp = true;
         }
     }
 }

@@ -10,6 +10,8 @@ public class WeaponSuper : MonoBehaviour
 
     [SerializeField] private GameObject playerRef;
     [SerializeField] public GameObject playerWeaponContainer;
+    [SerializeField] public GameObject[] playersWeapons;
+
     [SerializeField] private GameObject weaponModel;
     [SerializeField] private GameObject weaponMuzzle;
     [SerializeField] private GameObject projectileObject;
@@ -31,34 +33,38 @@ public class WeaponSuper : MonoBehaviour
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
         playerWeaponContainer = playerRef.GetComponent<Player_Movment>().myWeaponContainer;
+        refreshPlayerWeapons();
     }
 
     #region Pickup Functions
     public void pickUpWeapon(ref GameObject[] playerWeapons)
     {
-        Debug.Log("pickup up " + weaponName);
-        transform.parent = playerWeaponContainer.transform;
-        playerWeapons[0] = gameObject;
-        isPickedUp = true;
-
-
+        for(int i = 0; i < playersWeapons.Length; i++)
+        {
+            if(playersWeapons[i] == null && !isPickedUp)
+            {
+                transform.parent = playerWeaponContainer.transform;
+                playerWeapons[i] = this.gameObject;
+                isPickedUp = true;
+                return;
+            }
+            
+        }
     }
 
-    public void dropWeapon(ref GameObject[] playerWeapons)
+    public void dropWeapon()
     {
-        if(transform.parent != null && isPickedUp)
+        if (transform.parent != null && isPickedUp)
         {
-            for(int i = 0; i < playerWeapons.Length; i++)
-            {
-                if(playerWeapons[i].gameObject == gameObject)
-                {
-                    transform.parent = null;
-                    isPickedUp = false;
-                    Debug.Log(gameObject.name + " was dropped");
-                }
-            }
+            this.transform.parent = null;
+            isPickedUp = false;
 
         }
+    }
+
+    public void refreshPlayerWeapons()
+    {
+        playersWeapons = playerWeaponContainer.GetComponent<WeaponController>().myWeapons;
     }
     #endregion
 }

@@ -56,12 +56,16 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\Weapon.cs" />
     <Compile Include="Assets\Scripts\Weapons\Melee.cs" />
+    <Compile Include="Assets\WeaponsPack (LowPoly)\DemoScene\SpinWeapon.cs" />
     <Compile Include="Assets\Scripts\Gameplay\DoorwayScripts\SceneChangeObject.cs" />
+    <Compile Include="Assets\Scripts\SuperClasses\ProjectileWeapons.cs" />
     <Compile Include="Assets\Scripts\Menu Scripts\ControlMenu.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Graphics\Skyboxes\Starfield Skybox\Demo\Script\LookCamera.cs" />
     <Compile Include="Assets\Scripts\Weapons\projectiles.cs" />
+    <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\WeaponsChanger.cs" />
     <Compile Include="Assets\Scripts\Player\Camera_Controller.cs" />
     <Compile Include="Assets\Scripts\Menu Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Menu Scripts\PauseMenuScript.cs" />
@@ -70,18 +74,14 @@
     <Compile Include="Assets\Scripts\SuperClasses\Weapon.cs" />
     <Compile Include="Assets\Graphics\Models\Tensori\SkinlessZombie\Demo Scripts\UIElementController.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponController.cs" />
+    <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Graphics\Models\Tensori\SkinlessZombie\Demo Scripts\AnimationController.cs" />
     <Compile Include="Assets\Scripts\Utilites\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponsScript.cs" />
+    <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\SphericalRotation.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Graphics\Models\Tensori\SkinlessZombie\Demo Scripts\AnimationItemData.cs" />
     <Compile Include="Assets\Scripts\Player\Player_Movment.cs" />
-    <Compile Include="Assets\WeaponsPack (LowPoly)\DemoScene\SpinWeapon.cs" />
-    <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\SphericalRotation.cs" />
-    <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\Weapon.cs" />
-    <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\CameraMovement.cs" />
-    <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\WeaponsChanger.cs" />
-    <Compile Include="Assets\Scripts\SuperClasses\ProjectileWeapons.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

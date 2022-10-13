@@ -47,8 +47,20 @@ public class WeaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // checkWeapons();
-        ScrollWheelController();
+        if (myWeapons[1] != null)
+        {
+            hasMoreThanOneWeapon = true;
+        }
+        else
+        {
+            hasMoreThanOneWeapon = false;
+        }
+
+        if(hasMoreThanOneWeapon)
+            ScrollWheelController();
+
+       /* if(Input.GetKeyDown(KeyCode.Q))
+            checkChildren();*/
     }
 
     private void ScrollWheelController()
@@ -59,37 +71,36 @@ public class WeaponController : MonoBehaviour
             if (curWeaponNum < myWeapons.Length)
             {
                 curWeaponNum++;
+                checkWeapons();
                 return;
-            }
-            else if(curWeaponNum == myWeapons.Length)
-            {
-                curWeaponNum = myWeapons.Length;
             }
         }
         if (Input.GetAxisRaw("Mouse ScrollWheel") < 0)
         {
-            if (curWeaponNum > 0)
+            if (curWeaponNum > 1)
             {
                 curWeaponNum--;
                 return;
             }
             else
             {
-                curWeaponNum = 0;
+                curWeaponNum = 1;
             }
+            checkWeapons();
         }
+
+
     }
 
     private void checkWeapons()
     {
         if (hasMoreThanOneWeapon)
         {
-            if (myWeapons.Length > 0)
+            
+            for (int i = 0; i < myWeapons.Length && myWeapons[i].gameObject != null; i++)
             {
-                for (int i = 0; i < myWeapons.Length && myWeapons[i].gameObject != null; i++)
-                {
+                if(myWeapons[i].gameObject != fist.gameObject)
                     myWeapons[i].SetActive(false);
-                }
             }
 
             for (int i = 0; i < myWeapons.Length && myWeapons[i].gameObject != null; i++)
@@ -101,7 +112,7 @@ public class WeaponController : MonoBehaviour
                 }
                 else
                 {
-                    if (i != curWeaponNum && myWeapons[i].activeInHierarchy == true)
+                    if (i != curWeaponNum && myWeapons[i].activeInHierarchy == true && myWeapons[i].gameObject != fist)
                     {
                         myWeapons[i].SetActive(false);
                     }
@@ -109,5 +120,18 @@ public class WeaponController : MonoBehaviour
             }
         }
 
+    }
+
+    private void checkChildren()
+    {//dosnt work
+        //refresh weapons
+        for (int i = 0; i < myWeapons.Length; i++)
+        {
+            if (myWeapons[i].gameObject.transform.parent != gameObject && myWeapons[i].gameObject != fist.gameObject)
+            {
+                myWeapons[i] = null;
+            }
+
+        }
     }
 }

@@ -379,6 +379,7 @@ MonoBehaviour:
   weaponName: Cube
   playerRef: {fileID: 0}
   playerWeaponContainer: {fileID: 0}
+  playersWeapons: []
   weaponModel: {fileID: 1211262604}
   weaponMuzzle: {fileID: 1519613627}
   projectileObject: {fileID: 4606663890385369996, guid: 07a8360b8dd5aeb46898cab7601e9125, type: 3}
@@ -516,6 +517,7 @@ MonoBehaviour:
   weaponName: Cube
   playerRef: {fileID: 0}
   playerWeaponContainer: {fileID: 0}
+  playersWeapons: []
   weaponModel: {fileID: 1378557152}
   weaponMuzzle: {fileID: 255858619}
   projectileObject: {fileID: 4606663890385369996, guid: 07a8360b8dd5aeb46898cab7601e9125, type: 3}
@@ -649,7 +651,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3634720192683538085}
   m_Father: {fileID: 576304749338170662}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1265,6 +1268,7 @@ MonoBehaviour:
   weaponName: Cube
   playerRef: {fileID: 0}
   playerWeaponContainer: {fileID: 0}
+  playersWeapons: []
   weaponModel: {fileID: 576304749302721459}
   weaponMuzzle: {fileID: 1613917580950547324}
   projectileObject: {fileID: 4606663890385369996, guid: 07a8360b8dd5aeb46898cab7601e9125, type: 3}
@@ -1331,7 +1335,7 @@ Transform:
   m_Children:
   - {fileID: 1505222547}
   m_Father: {fileID: 3736323021816925365}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &576304749349829011
 MonoBehaviour:
@@ -1627,6 +1631,7 @@ MonoBehaviour:
   weaponName: 
   playerRef: {fileID: 0}
   playerWeaponContainer: {fileID: 0}
+  playersWeapons: []
   weaponModel: {fileID: 0}
   weaponMuzzle: {fileID: 0}
   projectileObject: {fileID: 0}
@@ -2052,6 +2057,7 @@ MonoBehaviour:
   weaponName: 
   playerRef: {fileID: 0}
   playerWeaponContainer: {fileID: 0}
+  playersWeapons: []
   weaponModel: {fileID: 0}
   weaponMuzzle: {fileID: 0}
   projectileObject: {fileID: 0}
@@ -2165,7 +2171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4123835378176568351}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.031, y: -0.479, z: 0.469}
+  m_LocalPosition: {x: 0.03100003, y: -2.815, z: -4.952}
   m_LocalScale: {x: 1.6019855, y: 1.6019855, z: 1.6019855}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2175,7 +2181,7 @@ Transform:
   - {fileID: 3736046648329696113}
   - {fileID: 3364152381392162385}
   - {fileID: 6001284196316508220}
-  m_Father: {fileID: 3736323021816925365}
+  m_Father: {fileID: 1505222547}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3643096719520813482
@@ -2305,7 +2311,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3634720192683538085}
   - {fileID: 4206212470283103362}
   - {fileID: 576304749338170662}
   m_Father: {fileID: 576304748686181062}
@@ -2551,7 +2556,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3736323021816925365}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4527084208006478128
 GameObject:
