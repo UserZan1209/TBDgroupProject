@@ -17,9 +17,9 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider colObj)
     {
-        switch (collision.gameObject.tag) 
+        switch (colObj.gameObject.tag) 
         {
             case "Projectile":
                 bodyRef.SetActive(false);

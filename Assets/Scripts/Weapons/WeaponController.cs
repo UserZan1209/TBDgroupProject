@@ -17,7 +17,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private int ammoReserve;
     [SerializeField] private int ammoCurrantMagazineMax;
     [SerializeField] private int ammoCurrantMagazine;
-    [SerializeField] private const int MAX_WEAPONS = 2;
+    [SerializeField] private const int MAX_WEAPONS = 2; // BUG : When more than 2 weapons has issues with scrolling between
 
     [SerializeField] private float curWeaponNum;
 
@@ -59,8 +59,8 @@ public class WeaponController : MonoBehaviour
         if(hasMoreThanOneWeapon)
             ScrollWheelController();
 
-       /* if(Input.GetKeyDown(KeyCode.Q))
-            checkChildren();*/
+        if (Input.GetKeyDown(KeyCode.Q))
+            checkChildren();
     }
 
     private void ScrollWheelController()
@@ -123,15 +123,27 @@ public class WeaponController : MonoBehaviour
     }
 
     private void checkChildren()
-    {//dosnt work
-        //refresh weapons
-        for (int i = 0; i < myWeapons.Length; i++)
+    {
+        
+        for (int i = 1; i < myWeapons.Length; i++)
         {
-            if (myWeapons[i].gameObject.transform.parent != gameObject && myWeapons[i].gameObject != fist.gameObject)
+            if (myWeapons[i].gameObject.transform.parent != null && myWeapons[i].activeInHierarchy)
             {
                 myWeapons[i] = null;
+                return;
+
             }
 
         }
+    }
+
+    private void swapWeapon(GameObject newWeapon)
+    {
+
+    }
+
+    private void setWeaponPosition()
+    {
+
     }
 }

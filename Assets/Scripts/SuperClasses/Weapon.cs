@@ -12,9 +12,10 @@ public class WeaponSuper : MonoBehaviour
     [SerializeField] public GameObject playerWeaponContainer;
     [SerializeField] public GameObject[] playersWeapons;
 
-    [SerializeField] private GameObject weaponModel;
-    [SerializeField] private GameObject weaponMuzzle;
-    [SerializeField] private GameObject projectileObject;
+    [SerializeField] public GameObject weaponModel;
+    [SerializeField] public GameObject weaponMuzzle;
+
+    [HideInInspector] private Rigidbody myRb;
 
     [SerializeField] private int ammoReserve;
     [SerializeField] private int ammoCurrantMagazineMax;
@@ -27,12 +28,15 @@ public class WeaponSuper : MonoBehaviour
     #region Pickup Variables
     [Header("Pickup Variables")]
     [SerializeField] public bool isPickedUp = false;
+    [SerializeField] private SphereCollider pickUpTrigger;
     #endregion
 
     public void initWeapon()
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
         playerWeaponContainer = playerRef.GetComponent<Player_Movment>().myWeaponContainer;
+        myRb = gameObject.GetComponent<Rigidbody>();
+        myRb.useGravity = false;
         refreshPlayerWeapons();
     }
 
@@ -58,6 +62,7 @@ public class WeaponSuper : MonoBehaviour
         {
             this.transform.parent = null;
             isPickedUp = false;
+            enableGravityWhenDropped();
 
         }
     }
@@ -65,6 +70,21 @@ public class WeaponSuper : MonoBehaviour
     public void refreshPlayerWeapons()
     {
         playersWeapons = playerWeaponContainer.GetComponent<WeaponController>().myWeapons;
+    }
+
+    private void enableGravityWhenDropped()
+    {
+        myRb.useGravity = true;
+    }
+
+    public void pickupTriggerController()
+    {
+        if (isPickedUp)
+        {
+            pickUpTrigger.enabled = false;
+        }
+        else
+            pickUpTrigger.enabled = true;
     }
     #endregion
 }
