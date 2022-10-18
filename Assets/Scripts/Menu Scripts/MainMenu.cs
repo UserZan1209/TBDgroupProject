@@ -20,6 +20,6 @@ public class MainMenu : MonoBehaviour
     public void loadNewGame()
     {
         Debug.Log("loading...");
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("StartingRoom");
     }
 }

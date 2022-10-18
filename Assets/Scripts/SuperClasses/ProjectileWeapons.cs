@@ -43,9 +43,9 @@ public class ProjectileWeapons : WeaponSuper
                         float ranY = Random.Range(-40, 40);
 
                         GameObject gm;
-                        Debug.Log(weaponModel.transform.rotation);
+                        //Debug.Log(weaponModel.transform.rotation);
                         Quaternion offset = new Quaternion(weaponModel.transform.rotation.x + ranX, weaponModel.transform.rotation.x + ranY,0.0f,1.0f);
-                        Debug.Log(offset);
+                        //Debug.Log(offset);
                         gm = Instantiate(projecitle, weaponMuzzle.transform.position, weaponModel.transform.rotation);
                         gm.GetComponent<projectiles>().weaponRef = weaponModel;
                         gm.transform.parent = null;

@@ -15,6 +15,8 @@ public class WeaponSuper : MonoBehaviour
     [SerializeField] public GameObject weaponModel;
     [SerializeField] public GameObject weaponMuzzle;
 
+    [SerializeField] private Transform weaponMovementTransform;
+
     [HideInInspector] private Rigidbody myRb;
 
     [SerializeField] private int ammoReserve;
@@ -29,6 +31,8 @@ public class WeaponSuper : MonoBehaviour
     [Header("Pickup Variables")]
     [SerializeField] public bool isPickedUp = false;
     [SerializeField] private SphereCollider pickUpTrigger;
+
+    [SerializeField] private BoxCollider collider;
     #endregion
 
     public void initWeapon()
@@ -37,6 +41,7 @@ public class WeaponSuper : MonoBehaviour
         playerWeaponContainer = playerRef.GetComponent<Player_Movment>().myWeaponContainer;
         myRb = gameObject.GetComponent<Rigidbody>();
         myRb.useGravity = false;
+        weaponMovementTransform = GameObject.FindWithTag("WeaponMovement").gameObject.transform;
         refreshPlayerWeapons();
     }
 
@@ -79,12 +84,37 @@ public class WeaponSuper : MonoBehaviour
 
     public void pickupTriggerController()
     {
+        
         if (isPickedUp)
         {
             pickUpTrigger.enabled = false;
+            collider.enabled = false;
+            weaponMovement();
         }
         else
+        {
             pickUpTrigger.enabled = true;
+            //collider.enabled = true;
+            myRb.velocity = Vector3.zero;
+        }
+
+    }
+
+    public void disableSpin()
+    {
+        //inprogress
     }
     #endregion
+
+    public void weaponMovement()
+    {
+        transform.position = weaponMovementTransform.position;
+        transform.rotation = weaponMovementTransform.rotation;
+        
+    }
+
+    public void toggleCollider()
+    {
+        collider.enabled = !collider.enabled;
+    }
 }

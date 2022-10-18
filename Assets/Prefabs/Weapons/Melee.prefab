@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 708cd044d5bda3f4b9f609c6c2256121, type: 2}
+  - {fileID: 2100000, guid: b0be19de2b909d34c85054ef2d5c6057, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,15 +106,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7276301387364620951}
-  m_LocalRotation: {x: 0.06538314, y: -0.8279589, z: 0.043846387, w: 0.55523574}
-  m_LocalPosition: {x: 4.733545, y: -1.0540953, z: 10.82}
-  m_LocalScale: {x: 0.017879266, y: 0.023886148, z: 0.023886155}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.231, y: -1.317, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7992020878459643353}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 8.35, y: -112.56, z: -3.452}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7323569917035806563
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,8 +144,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7323569917035806563}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8451487705491167981}
@@ -186,6 +186,7 @@ MonoBehaviour:
   playersWeapons: []
   weaponModel: {fileID: 0}
   weaponMuzzle: {fileID: 0}
+  weaponMovementTransform: {fileID: 0}
   ammoReserve: 0
   ammoCurrantMagazineMax: 0
   ammoCurrantMagazine: 0

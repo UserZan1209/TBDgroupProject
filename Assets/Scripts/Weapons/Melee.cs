@@ -7,6 +7,8 @@ public class Melee : WeaponSuper
     [SerializeField] private int weaponDamage;
     [SerializeField] private Camera mainCamRef;
     [SerializeField] private CapsuleCollider attackTrigger;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class Melee : WeaponSuper
         if (isPickedUp)
         {
             attackTrigger.enabled = true;
+            
         }
         else
         {
@@ -33,6 +36,7 @@ public class Melee : WeaponSuper
 
         if (isPickedUp)
         {
+            weaponMovement();
             if (Input.GetKeyUp(KeyCode.Q))
             {
                 dropWeapon();

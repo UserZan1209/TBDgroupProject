@@ -28,6 +28,7 @@ public class Player_Movment : MonoBehaviour
     [SerializeField] private bool isSprintingEnabled = true;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float defaultMoveSpeed;
     [SerializeField] private float sprintSpeed;
     [HideInInspector] public float maxVelocityChange = 10.0f;
     [SerializeField] public float jumpForceMultplyer = 5.0f;
@@ -40,6 +41,7 @@ public class Player_Movment : MonoBehaviour
     #region Camera Variables
     [Header("Camera Variables")]
     [SerializeField] private bool canCameraMove;
+    [SerializeField] private bool canWeaponMove;
     [HideInInspector] private bool isInverted = false;
     [HideInInspector] private bool isCursorVisible = false;
 
@@ -75,7 +77,7 @@ public class Player_Movment : MonoBehaviour
 
     private void Awake()
     {
-
+        defaultMoveSpeed = moveSpeed;
     }
 
     void Start()
@@ -90,8 +92,21 @@ public class Player_Movment : MonoBehaviour
 
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            lookSensitivity = 0;
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            lookSensitivity = defaultMoveSpeed;
+        }
+
+
         #region camera related
+      
         CameraController();
+
         if (Input.GetKeyUp(toggleLightKey))
             toggleFlashLight();
 
@@ -102,7 +117,12 @@ public class Player_Movment : MonoBehaviour
             jump();
 
         if (Input.GetKeyUp(KeyCode.F1))
+        {
+            Cursor.lockState = CursorLockMode.Confined;
             SceneManager.LoadScene(0); // main menu
+        }
+
+
     }
 
     private void FixedUpdate()
