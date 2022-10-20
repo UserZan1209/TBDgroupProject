@@ -8,6 +8,9 @@ public class WeaponSuper : MonoBehaviour
     [Header("Weapon Variables")]
     [SerializeField] public string weaponName;
 
+    #region references
+    [Header("References")]
+
     [SerializeField] private GameObject playerRef;
     [SerializeField] public GameObject playerWeaponContainer;
     [SerializeField] public GameObject[] playersWeapons;
@@ -18,6 +21,10 @@ public class WeaponSuper : MonoBehaviour
     [SerializeField] private Transform weaponMovementTransform;
 
     [HideInInspector] private Rigidbody myRb;
+
+
+    [SerializeField] public Camera mainCamRef;
+    #endregion
 
     [SerializeField] private int ammoReserve;
     [SerializeField] private int ammoCurrantMagazineMax;
@@ -35,6 +42,7 @@ public class WeaponSuper : MonoBehaviour
     [SerializeField] private BoxCollider collider;
     #endregion
 
+
     public void initWeapon()
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
@@ -42,6 +50,8 @@ public class WeaponSuper : MonoBehaviour
         myRb = gameObject.GetComponent<Rigidbody>();
         myRb.useGravity = false;
         weaponMovementTransform = GameObject.FindWithTag("WeaponMovement").gameObject.transform;
+        collider = gameObject.GetComponent<BoxCollider>();
+        mainCamRef = Camera.main;
         refreshPlayerWeapons();
     }
 
@@ -94,7 +104,7 @@ public class WeaponSuper : MonoBehaviour
         else
         {
             pickUpTrigger.enabled = true;
-            //collider.enabled = true;
+            collider.enabled = true;
             myRb.velocity = Vector3.zero;
         }
 
@@ -105,6 +115,8 @@ public class WeaponSuper : MonoBehaviour
         //inprogress
     }
     #endregion
+
+    #region weapon movement
 
     public void weaponMovement()
     {
@@ -117,4 +129,18 @@ public class WeaponSuper : MonoBehaviour
     {
         collider.enabled = !collider.enabled;
     }
+    #endregion
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player" && Input.GetKeyUp(KeyCode.F) && !isPickedUp)
+        {
+            refreshPlayerWeapons();
+            Debug.Log("player picked me up");
+            pickUpWeapon(ref playerWeaponContainer.GetComponent<WeaponController>().myWeapons);
+            isPickedUp = true;
+        }
+    }
+
+
 }

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Melee : WeaponSuper
 {
+    #region melee weapon variables
+    [Header("melee weapon variables")]
     [SerializeField] private int weaponDamage;
-    [SerializeField] private Camera mainCamRef;
     [SerializeField] private CapsuleCollider attackTrigger;
-
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        mainCamRef = Camera.main;
         initWeapon();
     }
 
@@ -20,53 +20,40 @@ public class Melee : WeaponSuper
     void Update()
     {
         pickupTriggerController();
+
+
+        if (isPickedUp)
+        {
+            weaponMovement();
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+                attack();
+
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                isPickedUp = false;
+                dropWeapon();
+            }
+        }
+    }
+
+    #region combat functions
+    private void attack()
+    {
+        enableBladeCollider();
+    }
+
+    private void enableBladeCollider() 
+    {
         if (isPickedUp)
         {
             attackTrigger.enabled = true;
-            
+
         }
         else
         {
             attackTrigger.enabled = false;
         }
-
-        Debug.DrawRay(mainCamRef.transform.position, mainCamRef.transform.forward, Color.cyan);
-        if (Input.GetKey(KeyCode.Mouse0))
-            attack();
-
-        if (isPickedUp)
-        {
-            weaponMovement();
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                dropWeapon();
-                isPickedUp = false;
-            }
-        }
     }
-
-    private void attack()
-    {
-        RaycastHit hit;
-       
-        if(Physics.Raycast(mainCamRef.transform.position, mainCamRef.transform.forward, out hit, weaponRange))
-        {
-            Debug.Log("Hit: " + hit.transform.name);
-            if (hit.transform.gameObject.tag == "Enemy") 
-            {
-                hit.transform.gameObject.GetComponent<EnemyController>().takeDamage(0);
-            }
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.F) && !isPickedUp)
-        {
-            refreshPlayerWeapons();
-            Debug.Log("player picked me up");
-            pickUpWeapon(ref playerWeaponContainer.GetComponent<WeaponController>().myWeapons);
-            isPickedUp = true;
-        }
-    }
+    #endregion
 }

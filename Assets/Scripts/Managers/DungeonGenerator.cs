@@ -5,35 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class DungeonGenerator : MonoBehaviour
 {
+    #region dungeon generator variables
+    [Header("dungeon generator settings")]
+
     [SerializeField] public string scene_StartingRoom = "StartingRoom";
 
     [SerializeField] private const int BOSS_ROOM_REQ = 7;
 
     [SerializeField] private int currantDungeonsCompleted = 0;
+    #endregion
 
-    [SerializeField] public Scene[] scenes;
+    #region dungeon generator storage arrays
+    [Header("dungeon storage arrays")]
 
-
+    //These arrays are used to randomly select a type of room to load
     [SerializeField] private string[] dungeonRoomNames = new string[] { "RoomOne", "DungeonOne" };
     [SerializeField] private string[] bossRoomNames = new string[] { "MainMenu" };
 
     [SerializeField] public Scene[] dungeonScenes;
     [SerializeField] public Scene[] bossScenes;
+    #endregion
 
-    // Start is called before the first frame update
     void Awake()
     {
-       dungeonScenes = new Scene[dungeonRoomNames.Length];
-       bossScenes = new Scene[bossScenes.Length];
+        setArraySize();
     }
 
-    // Update is called once per frame
     void Update()
     {
         debugInputs();
-
-
-
     }
 
     private void debugInputs()
@@ -47,6 +47,12 @@ public class DungeonGenerator : MonoBehaviour
         {
             completedRoom();
         }
+    }
+
+    private void setArraySize()
+    {
+        dungeonScenes = new Scene[dungeonRoomNames.Length];
+        bossScenes = new Scene[bossScenes.Length];
     }
 
     public void resetCompletedRooms()

@@ -58,11 +58,19 @@ public class Player_Movment : MonoBehaviour
     [SerializeField] private Light myLight;
     #endregion
 
-    #region Player Input Keys
-    [Header("Player Inputs")]
+    #region Player keyboard Input Keys
+    [Header("Player Keyboard Inputs")]
     [SerializeField] KeyCode sprintKey;
     [SerializeField] KeyCode toggleLightKey;
     [SerializeField] KeyCode jumpKey;
+
+    #endregion
+
+    #region Player controller Inputs
+    [Header("Player controller Inputs")]
+   /* [SerializeField] KeyCode sprintButton;
+    [SerializeField] KeyCode toggleLightKey;
+    [SerializeField] KeyCode jumpKey;*/
 
     #endregion
 
@@ -75,59 +83,59 @@ public class Player_Movment : MonoBehaviour
     [SerializeField] private Camera cam;
     #endregion
 
-    private void Awake()
-    {
-        defaultMoveSpeed = moveSpeed;
-    }
-
     void Start()
     {
-        sprintSpeed = moveSpeed * 1.5f;
-        playerRb = myBodyRef.gameObject.GetComponent<Rigidbody>();
-        cam = Camera.main;
-        isCursorVisible = false;
-        myLight.enabled = false;
-
+        initPlayer();
     }
 
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            lookSensitivity = 0;
-        }
-        else if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            lookSensitivity = defaultMoveSpeed;
-        }
-
-
-        #region camera related
+        #region camera 
       
         CameraController();
-
-        if (Input.GetKeyUp(toggleLightKey))
-            toggleFlashLight();
 
         checkForCursorChange();
         #endregion
 
+        #region jump
         if (Input.GetKeyUp(jumpKey))
             jump();
+        #endregion
 
-        if (Input.GetKeyUp(KeyCode.F1))
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            SceneManager.LoadScene(0); // main menu
-        }
+        #region light controller
+        if (Input.GetKeyUp(toggleLightKey))
+            toggleFlashLight();
+        #endregion
 
+        debugControls();
 
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+    }
+
+    private void initPlayer()
+    {
+        defaultMoveSpeed = moveSpeed;
+        sprintSpeed = moveSpeed * 1.5f;
+
+        playerRb = myBodyRef.gameObject.GetComponent<Rigidbody>();
+        cam = Camera.main;
+
+        isCursorVisible = false;
+        myLight.enabled = false;
+    }
+
+    private void debugControls()
+    {
+        if (Input.GetKeyUp(KeyCode.F1))
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            SceneManager.LoadScene(0); // main menu
+        }
     }
 
     private void MovePlayer()
@@ -255,7 +263,7 @@ public class Player_Movment : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 break;
             default:
-                Debug.Log("Cursor Lock State is none");
+                //Debug.Log("Cursor Lock State is none");
                 Cursor.lockState = CursorLockMode.None;
                 break;
         }
@@ -272,7 +280,7 @@ public class Player_Movment : MonoBehaviour
         }
         else
         {
-            Debug.Log("Jump Limit reached");
+            //Debug.Log("Jump Limit reached");
             for (int i = 0; i <= JUMP_COOLDOWN; i++)
             {
                 if (i == JUMP_COOLDOWN)

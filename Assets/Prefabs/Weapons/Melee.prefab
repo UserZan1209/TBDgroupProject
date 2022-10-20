@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7276301387364620951}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.231, y: -1.317, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7323569917035806563}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.23, y: -1.22, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -187,6 +187,7 @@ MonoBehaviour:
   weaponModel: {fileID: 0}
   weaponMuzzle: {fileID: 0}
   weaponMovementTransform: {fileID: 0}
+  mainCamRef: {fileID: 0}
   ammoReserve: 0
   ammoCurrantMagazineMax: 0
   ammoCurrantMagazine: 0
@@ -194,8 +195,8 @@ MonoBehaviour:
   weaponRange: 0
   isPickedUp: 0
   pickUpTrigger: {fileID: 7323569917035806568}
+  collider: {fileID: 0}
   weaponDamage: 10
-  mainCamRef: {fileID: 0}
   attackTrigger: {fileID: 7323569917035806574}
 --- !u!65 &7323569917035806575
 BoxCollider:

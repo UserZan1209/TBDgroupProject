@@ -47,6 +47,17 @@ public class WeaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkWeaponAmount();
+
+        if(hasMoreThanOneWeapon)
+            ScrollWheelController();
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            checkChildren();
+    }
+
+    private void checkWeaponAmount()
+    {
         if (myWeapons[1] != null)
         {
             hasMoreThanOneWeapon = true;
@@ -56,11 +67,6 @@ public class WeaponController : MonoBehaviour
             hasMoreThanOneWeapon = false;
         }
 
-        if(hasMoreThanOneWeapon)
-            ScrollWheelController();
-
-        if (Input.GetKeyDown(KeyCode.Q))
-            checkChildren();
     }
 
     private void ScrollWheelController()
@@ -135,15 +141,5 @@ public class WeaponController : MonoBehaviour
             }
 
         }
-    }
-
-    private void swapWeapon(GameObject newWeapon)
-    {
-
-    }
-
-    private void setWeaponPosition()
-    {
-
     }
 }

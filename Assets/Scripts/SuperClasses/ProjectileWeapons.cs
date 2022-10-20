@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ProjectileWeapons : WeaponSuper
 {
+    #region projectile weapon variables
+    [Header("projectile weapon variables")]
     [SerializeField] private GameObject projecitle;
     [SerializeField] private bool isAutomatic = false;
     [SerializeField] private int fireRate = 1;
+    #endregion
     // Start is called before the first frame update
     void Awake()
     {
@@ -60,13 +63,4 @@ public class ProjectileWeapons : WeaponSuper
     }
     #endregion
 
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.F))
-        {
-            refreshPlayerWeapons();
-            Debug.Log("player picked me up");
-            pickUpWeapon(ref playerWeaponContainer.GetComponent<WeaponController>().myWeapons);
-        }
-    }
 }

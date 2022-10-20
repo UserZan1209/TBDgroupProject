@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player_Weapon_Movment : MonoBehaviour
 {
+    #region player weapon movement variables
+    [Header("weapon movement variables")]
     [SerializeField] private GameObject armsRef;
 
     [SerializeField] private float axisInputX;
@@ -15,13 +17,25 @@ public class Player_Weapon_Movment : MonoBehaviour
  
     [SerializeField] private Vector3 startPos;
     [SerializeField] private Vector3 moveVector;
-
-    private void Awake()
-    {
-        
-    }
+    #endregion
 
     void Update()
+    {
+
+        updateAxis();
+        weaponMovementContoller();
+        #region weapon movement
+        if (canMoveWeapon)
+            changeObjectPosAndRot();
+        #endregion
+    }
+    private void updateAxis()
+    {
+        axisInputX = Input.GetAxis("Mouse X");
+        axisInputY = Input.GetAxis("Mouse Y");
+    }
+
+    private void weaponMovementContoller()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -33,18 +47,6 @@ public class Player_Weapon_Movment : MonoBehaviour
             startPos = transform.position;
         }
 
-        updateAxis();
-
-        if (canMoveWeapon)
-        {
-            
-            changeObjectPosAndRot();
-        }
-    }
-    private void updateAxis()
-    {
-        axisInputX = Input.GetAxis("Mouse X");
-        axisInputY = Input.GetAxis("Mouse Y");
     }
 
     private void changeObjectPosAndRot()
