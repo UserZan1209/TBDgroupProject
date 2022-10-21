@@ -69,7 +69,6 @@
     <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\WeaponsChanger.cs" />
     <Compile Include="Assets\Scripts\Player\Camera_Controller.cs" />
     <Compile Include="Assets\Scripts\Menu Scripts\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\Menu Scripts\PauseMenuScript.cs" />
     <Compile Include="Assets\Scripts\Utilites\LevelSystem.cs" />
     <Compile Include="Assets\Scripts\Player\Player_Weapon_Movment.cs" />
     <Compile Include="Assets\Graphics\Models\Tensori\SkinlessZombie\Demo Scripts\CameraController.cs" />
@@ -86,6 +85,8 @@
     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Graphics\Models\Tensori\SkinlessZombie\Demo Scripts\AnimationItemData.cs" />
     <Compile Include="Assets\Scripts\Player\Player_Movment.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Player\Player_HUD.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
