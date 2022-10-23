@@ -19,7 +19,7 @@ public class DungeonGenerator : MonoBehaviour
     [Header("dungeon storage arrays")]
 
     //These arrays are used to randomly select a type of room to load
-    [SerializeField] private string[] dungeonRoomNames = new string[] { "RoomOne", "DungeonOne" };
+    [SerializeField] private string[] dungeonRoomNames;
     [SerializeField] private string[] bossRoomNames = new string[] { "MainMenu" };
 
     [SerializeField] public Scene[] dungeonScenes;
@@ -51,6 +51,8 @@ public class DungeonGenerator : MonoBehaviour
 
     private void setArraySize()
     {
+        dungeonRoomNames = new string[] { "DungeonOne", "DungeonTwo" };
+
         dungeonScenes = new Scene[dungeonRoomNames.Length];
         bossScenes = new Scene[bossScenes.Length];
     }

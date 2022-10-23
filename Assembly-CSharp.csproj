@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Menu Scripts\ControlMenu.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Graphics\Skyboxes\Starfield Skybox\Demo\Script\LookCamera.cs" />
+    <Compile Include="Assets\Scripts\Player\Player_HUD.cs" />
     <Compile Include="Assets\Scripts\Weapons\projectiles.cs" />
     <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\WeaponsChanger.cs" />
     <Compile Include="Assets\Scripts\Player\Camera_Controller.cs" />
@@ -82,11 +83,10 @@
     <Compile Include="Assets\Scripts\Weapons\WeaponsScript.cs" />
     <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
     <Compile Include="Assets\PBRMeleeWeaponsPack\Scripts\SphericalRotation.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Graphics\Models\Tensori\SkinlessZombie\Demo Scripts\AnimationItemData.cs" />
     <Compile Include="Assets\Scripts\Player\Player_Movment.cs" />
-    <Compile Include="Assets\Scripts\Menu Scripts\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_HUD.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
